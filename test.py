@@ -1,4 +1,4 @@
 import motors
 import db
 
-db = MyDB()
+database = MyDB() from db
