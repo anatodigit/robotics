@@ -20,19 +20,19 @@ def motor_control(tf,pin7,pin11,pin13,pin15):
 def forward(tf):
     motor_control(tf,False,True,True,False)
     
-def reverse(tf)
+def reverse(tf):
     motor_control(tf,True,False,False,True)
 
-def turn_left(tf)
+def turn_left(tf):
     motor_control(tf,True,True,True,False)
 
-def turn_right(tf)
+def turn_right(tf):
     motor_control(tf,False,True,False,False)
     
-def pivot_left(tf)
+def pivot_left(tf):
     motor_control(tf,True,False,True,False)
 
-def pivot_right(tf)
+def pivot_right(tf):
     motor_control(tf,False,True,False,True)
 
 
