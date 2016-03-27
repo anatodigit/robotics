@@ -8,7 +8,7 @@ def init():
     gpio.setup(13,gpio.OUT)
     gpio.setup(15,gpio.OUT)
     
-def motor_control(tf,pin7,pin11,pin13,pin15)
+def motor_control(tf,pin7,pin11,pin13,pin15):
     init()
     gpio.output(7, pin7)
     gpio.output(11, pin11)
