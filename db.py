@@ -12,8 +12,8 @@ class MyDB(object):
     def query(self, query, params):
         return self._db_cur.execute(query, params)
         
-    def fetch_row(self, query, params):
-        self._db_cur.execute(query, params)
+    def fetch_row(self, query):
+        self._db_cur.execute(query)
         return self._db_cur.fetchone()
         
     def __del__(self):
