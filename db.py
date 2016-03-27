@@ -14,3 +14,4 @@ class MyDB(object):
         
     def __del__(self):
         self._db_connection.close()
+        
