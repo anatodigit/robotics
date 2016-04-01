@@ -2,7 +2,7 @@
 from smbus import SMBus
 busNum = 1
 b = SMBus(busNum)
-LSM = 0x1d
+LSM = 0x5c
 LSM_WHOAMI = 0b1011101 #Device self-id
 
 print 'test:'+str(b.read_byte_data(LSM, 0x0f))
