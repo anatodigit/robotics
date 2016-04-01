@@ -1,3 +1,4 @@
+#https://www.pololu.com/file/download/LSM303D.pdf?file_id=0J703
 # https://forum.pololu.com/t/lsm303d-raspberry-pi-driver/7698
 #Driver for the LSM303D accelerometer and magnetometer/compass
 #First follow the procedure to enable I2C on R-Pi.
