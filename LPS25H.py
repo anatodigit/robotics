@@ -2,7 +2,7 @@
 from smbus import SMBus
 busNum = 1
 b = SMBus(busNum)
-LSM = 0x5d
+LSM = 0x6b
 LSM_WHOAMI = 0b1011101 #Device self-id
 
 
