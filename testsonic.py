@@ -1,3 +1,3 @@
 import sonic
 
-sonic.distance()
+print "distance is "+sonic.distance()
