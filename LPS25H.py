@@ -5,7 +5,7 @@ b = SMBus(busNum)
 LSM = 0x6b
 LSM_WHOAMI = 0b1011101 #Device self-id
 
-
+print 'test:'+str(b.read_byte_data(LSM, 0x0f))
 
 
 if b.read_byte_data(LSM, 0x0f) == LSM_WHOAMI:
