@@ -293,10 +293,10 @@ class MyIMU(object):
             magYcomp = MAGx*math.sin(roll)*math.sin(pitch)+MAGy*math.cos(roll)-MAGz*math.sin(roll)*math.cos(pitch)
             
             #Calculate tilt compensated heading
-                tiltCompensatedHeading = 180 * math.atan2(magYcomp,magXcomp)/M_PI
-            
-                if tiltCompensatedHeading < 0:
-                        tiltCompensatedHeading += 360
+            tiltCompensatedHeading = 180 * math.atan2(magYcomp,magXcomp)/M_PI
+        
+            if tiltCompensatedHeading < 0:
+                    tiltCompensatedHeading += 360
             
             
             
