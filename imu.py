@@ -11,7 +11,7 @@
 import time, math
 
 class MyIMU(object):
-    b
+    b = False
     ## LSM303D Registers --------------------------------------------------------------
     LSM = 0x1d #Device I2C slave address
     
