@@ -83,26 +83,11 @@ class MyIMU(object):
         self.b.write_byte_data(self.LSM, self.LSM_CTRL_5, 0b01100100) #high resolution mode, thermometer off, 6.25hz ODR
         self.b.write_byte_data(self.LSM, self.LSM_CTRL_6, 0b00100000) # set +/- 4 gauss full scale
         self.b.write_byte_data(self.LSM, self.LSM_CTRL_7, 0x00) #get magnetometer out of low power mode
-        
         self.b.write_byte_data(self.LGD, self.LGD_CTRL_1, 0x0F) #turn on gyro and set to normal mode
         #Read data from the chips ----------------------
         while True:
             time.sleep(0.5)
-            magx = self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_MAG_X_MSB), self.b.read_byte_data(self.LSM, self.LSM_MAG_X_LSB))
-            magy = self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_MAG_Y_MSB), self.b.read_byte_data(self.LSM, self.LSM_MAG_Y_LSB))
-            magz = self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_MAG_Z_MSB), self.b.read_byte_data(self.LSM, self.LSM_MAG_Z_LSB))
-            
-            accx = self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_ACC_X_MSB), self.b.read_byte_data(self.LSM, self.LSM_ACC_X_LSB))
-            accy = self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_ACC_Y_MSB), self.b.read_byte_data(self.LSM, self.LSM_ACC_Y_LSB))
-            accz = self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_ACC_Z_MSB), self.b.read_byte_data(self.LSM, self.LSM_ACC_Z_LSB))
-        
-            gyrox = self.twos_comp_combine(self.b.read_byte_data(self.LGD, self.LGD_GYRO_X_MSB), self.b.read_byte_data(self.LGD, self.LGD_GYRO_X_LSB))
-            gyroy = self.twos_comp_combine(self.b.read_byte_data(self.LGD, self.LGD_GYRO_Y_MSB), self.b.read_byte_data(self.LGD, self.LGD_GYRO_Y_LSB))
-            gyroz = self.twos_comp_combine(self.b.read_byte_data(self.LGD, self.LGD_GYRO_Z_MSB), self.b.read_byte_data(self.LGD, self.LGD_GYRO_Z_LSB))
-        
-            data = (magx, magy, magz, accx, accy, accz, gyrox, gyroy, gyroz)
-            
-            print data
+            print self.readSensors()
     
     
     def twos_comp_combine(self, msb, lsb):
@@ -123,5 +108,20 @@ class MyIMU(object):
             print 'L3GD20H detected successfully on I2C bus '+str(self.busNum)+'.'
         else:
             print 'No L3GD20H detected on bus on I2C bus '+str(self.busNum)+'.'
-
     
+    
+    def readSensors(self):
+        magx = self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_MAG_X_MSB), self.b.read_byte_data(self.LSM, self.LSM_MAG_X_LSB))
+        magy = self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_MAG_Y_MSB), self.b.read_byte_data(self.LSM, self.LSM_MAG_Y_LSB))
+        magz = self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_MAG_Z_MSB), self.b.read_byte_data(self.LSM, self.LSM_MAG_Z_LSB))
+        
+        accx = self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_ACC_X_MSB), self.b.read_byte_data(self.LSM, self.LSM_ACC_X_LSB))
+        accy = self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_ACC_Y_MSB), self.b.read_byte_data(self.LSM, self.LSM_ACC_Y_LSB))
+        accz = self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_ACC_Z_MSB), self.b.read_byte_data(self.LSM, self.LSM_ACC_Z_LSB))
+    
+        gyrox = self.twos_comp_combine(self.b.read_byte_data(self.LGD, self.LGD_GYRO_X_MSB), self.b.read_byte_data(self.LGD, self.LGD_GYRO_X_LSB))
+        gyroy = self.twos_comp_combine(self.b.read_byte_data(self.LGD, self.LGD_GYRO_Y_MSB), self.b.read_byte_data(self.LGD, self.LGD_GYRO_Y_LSB))
+        gyroz = self.twos_comp_combine(self.b.read_byte_data(self.LGD, self.LGD_GYRO_Z_MSB), self.b.read_byte_data(self.LGD, self.LGD_GYRO_Z_LSB))
+    
+        data = (magx, magy, magz, accx, accy, accz, gyrox, gyroy, gyroz)
+        return data
