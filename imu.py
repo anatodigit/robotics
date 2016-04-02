@@ -96,17 +96,17 @@ class MyIMU(object):
         #Read data from the chips ----------------------
         while True:
             time.sleep(0.5)
-            magx = self.twos_comp_combine(b.read_byte_data(LSM, LSM_MAG_X_MSB), b.read_byte_data(LSM, LSM_MAG_X_LSB))
-            magy = self.twos_comp_combine(b.read_byte_data(LSM, LSM_MAG_Y_MSB), b.read_byte_data(LSM, LSM_MAG_Y_LSB))
-            magz = self.twos_comp_combine(b.read_byte_data(LSM, LSM_MAG_Z_MSB), b.read_byte_data(LSM, LSM_MAG_Z_LSB))
+            magx = self.twos_comp_combine(b.read_byte_data(self.LSM, self.LSM_MAG_X_MSB), b.read_byte_data(self.LSM, self.LSM_MAG_X_LSB))
+            magy = self.twos_comp_combine(b.read_byte_data(self.LSM, self.LSM_MAG_Y_MSB), b.read_byte_data(self.LSM, self.LSM_MAG_Y_LSB))
+            magz = self.twos_comp_combine(b.read_byte_data(self.LSM, self.LSM_MAG_Z_MSB), b.read_byte_data(self.LSM, self.LSM_MAG_Z_LSB))
             
-            accx = self.twos_comp_combine(b.read_byte_data(LSM, LSM_ACC_X_MSB), b.read_byte_data(LSM, LSM_ACC_X_LSB))
-            accy = self.twos_comp_combine(b.read_byte_data(LSM, LSM_ACC_Y_MSB), b.read_byte_data(LSM, LSM_ACC_Y_LSB))
-            accz = self.twos_comp_combine(b.read_byte_data(LSM, LSM_ACC_Z_MSB), b.read_byte_data(LSM, LSM_ACC_Z_LSB))
+            accx = self.twos_comp_combine(b.read_byte_data(self.LSM, self.LSM_ACC_X_MSB), b.read_byte_data(self.LSM, self.LSM_ACC_X_LSB))
+            accy = self.twos_comp_combine(b.read_byte_data(self.LSM, self.LSM_ACC_Y_MSB), b.read_byte_data(self.LSM, self.LSM_ACC_Y_LSB))
+            accz = self.twos_comp_combine(b.read_byte_data(self.LSM, self.LSM_ACC_Z_MSB), b.read_byte_data(self.LSM, self.LSM_ACC_Z_LSB))
         
-            gyrox = self.twos_comp_combine(b.read_byte_data(LGD, LGD_GYRO_X_MSB), b.read_byte_data(LGD, LGD_GYRO_X_LSB))
-            gyroy = self.twos_comp_combine(b.read_byte_data(LGD, LGD_GYRO_Y_MSB), b.read_byte_data(LGD, LGD_GYRO_Y_LSB))
-            gyroz = self.twos_comp_combine(b.read_byte_data(LGD, LGD_GYRO_Z_MSB), b.read_byte_data(LGD, LGD_GYRO_Z_LSB))
+            gyrox = self.twos_comp_combine(b.read_byte_data(self.LGD, self.LGD_GYRO_X_MSB), b.read_byte_data(self.LGD, self.LGD_GYRO_X_LSB))
+            gyroy = self.twos_comp_combine(b.read_byte_data(self.LGD, self.LGD_GYRO_Y_MSB), b.read_byte_data(self.LGD, self.LGD_GYRO_Y_LSB))
+            gyroz = self.twos_comp_combine(b.read_byte_data(self.LGD, self.LGD_GYRO_Z_MSB), b.read_byte_data(self.LGD, self.LGD_GYRO_Z_LSB))
         
             data = (magx, magy, magz, accx, accy, accz, gyrox, gyroy, gyroz)
             
