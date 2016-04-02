@@ -87,7 +87,8 @@ class MyIMU(object):
         #Read data from the chips ----------------------
         while True:
             time.sleep(0.5)
-            print self.readSensors()
+            #print self.readSensors()
+            print "MagX:"+str(self.readMagX)
     
     
     def twos_comp_combine(self, msb, lsb):
