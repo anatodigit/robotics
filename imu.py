@@ -12,6 +12,7 @@ import time, math
 
 class MyIMU(object):
     b = False
+    busNum = 1
     ## LSM303D Registers --------------------------------------------------------------
     LSM = 0x1d #Device I2C slave address
     
@@ -74,18 +75,8 @@ class MyIMU(object):
 
     def __init__(self):
         from smbus import SMBus
-        busNum = 1
-        self.b = SMBus(busNum)
-        #Ensure chip is detected properly on the bus ----------------------
-        if self.b.read_byte_data(self.LSM, self.LSM_WHOAMI_ADDRESS) == self.LSM_WHOAMI_CONTENTS:
-            print 'LSM303D detected successfully on I2C bus '+str(busNum)+'.'
-        else:
-            print 'No LSM303D detected on bus on I2C bus '+str(busNum)+'.'
-        
-        if self.b.read_byte_data(self.LGD, self.LGD_WHOAMI_ADDRESS) == self.LGD_WHOAMI_CONTENTS:
-            print 'L3GD20H detected successfully on I2C bus '+str(busNum)+'.'
-        else:
-            print 'No L3GD20H detected on bus on I2C bus '+str(busNum)+'.'
+        self.b = SMBus(self.busNum)
+        self.detectTest()
         #Set up the chips for reading  ----------------------
         self.b.write_byte_data(self.LSM, self.LSM_CTRL_1, 0b1010111) # enable accelerometer, 50 hz sampling
         self.b.write_byte_data(self.LSM, self.LSM_CTRL_2, 0x00) #set +/- 2g full scale
@@ -120,5 +111,17 @@ class MyIMU(object):
             return twos_comp - 65536
         else:
             return twos_comp
-    
+            
+    def detectTest(self):
+        #Ensure chip is detected properly on the bus ----------------------
+        if self.b.read_byte_data(self.LSM, self.LSM_WHOAMI_ADDRESS) == self.LSM_WHOAMI_CONTENTS:
+            print 'LSM303D detected successfully on I2C bus '+str(self.busNum)+'.'
+        else:
+            print 'No LSM303D detected on bus on I2C bus '+str(self.busNum)+'.'
+        
+        if self.b.read_byte_data(self.LGD, self.LGD_WHOAMI_ADDRESS) == self.LGD_WHOAMI_CONTENTS:
+            print 'L3GD20H detected successfully on I2C bus '+str(self.busNum)+'.'
+        else:
+            print 'No L3GD20H detected on bus on I2C bus '+str(self.busNum)+'.'
+
     
