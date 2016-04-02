@@ -94,8 +94,6 @@ class MyIMU(object):
         
         b.write_byte_data(self.LGD, self.LGD_CTRL_1, 0x0F) #turn on gyro and set to normal mode
         #Read data from the chips ----------------------
-        print b.read_byte_data(self.LSM, self.LSM_MAG_X_MSB)      
-        print b.read_byte_data(self.LSM, self.LSM_MAG_X_LSB)
         while True:
             time.sleep(0.5)
             magx = self.twos_comp_combine(b.read_byte_data(self.LSM, self.LSM_MAG_X_MSB), b.read_byte_data(self.LSM, self.LSM_MAG_X_LSB))
@@ -115,7 +113,7 @@ class MyIMU(object):
             print data
     
     
-    def twos_comp_combine(msb, lsb):
+    def twos_comp_combine(self, msb, lsb):
         twos_comp = 256*msb + lsb
         if twos_comp >= 32768:
             return twos_comp - 65536
