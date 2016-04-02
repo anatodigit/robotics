@@ -155,7 +155,7 @@ class MyIMU(object):
         return self.twos_comp_combine(self.b.read_byte_data(self.LGD, self.LGD_GYRO_Y_MSB), self.b.read_byte_data(self.LGD, self.LGD_GYRO_Y_LSB))
         
     def readGyroZ(self):
-        read self.twos_comp_combine(self.b.read_byte_data(self.LGD, self.LGD_GYRO_Z_MSB), self.b.read_byte_data(self.LGD, self.LGD_GYRO_Z_LSB))
+        return self.twos_comp_combine(self.b.read_byte_data(self.LGD, self.LGD_GYRO_Z_MSB), self.b.read_byte_data(self.LGD, self.LGD_GYRO_Z_LSB))
         
 
     
