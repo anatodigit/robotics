@@ -111,6 +111,7 @@ class MyIMU(object):
     
     
     def readSensors(self):
+        '''
         magx = self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_MAG_X_MSB), self.b.read_byte_data(self.LSM, self.LSM_MAG_X_LSB))
         magy = self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_MAG_Y_MSB), self.b.read_byte_data(self.LSM, self.LSM_MAG_Y_LSB))
         magz = self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_MAG_Z_MSB), self.b.read_byte_data(self.LSM, self.LSM_MAG_Z_LSB))
@@ -122,6 +123,39 @@ class MyIMU(object):
         gyrox = self.twos_comp_combine(self.b.read_byte_data(self.LGD, self.LGD_GYRO_X_MSB), self.b.read_byte_data(self.LGD, self.LGD_GYRO_X_LSB))
         gyroy = self.twos_comp_combine(self.b.read_byte_data(self.LGD, self.LGD_GYRO_Y_MSB), self.b.read_byte_data(self.LGD, self.LGD_GYRO_Y_LSB))
         gyroz = self.twos_comp_combine(self.b.read_byte_data(self.LGD, self.LGD_GYRO_Z_MSB), self.b.read_byte_data(self.LGD, self.LGD_GYRO_Z_LSB))
-    
+   
         data = (magx, magy, magz, accx, accy, accz, gyrox, gyroy, gyroz)
+        '''  
+        data = (self.readMagX, self.readMagY, self.readMagZ, self.readAccX, self.readAccY, self.readAccZ, self.readGyroX, self.readGyroY, self.readGyroZ)
         return data
+
+
+    def readMagX(self):
+        return self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_MAG_X_MSB), self.b.read_byte_data(self.LSM, self.LSM_MAG_X_LSB))
+        
+    def readMagY(self):
+        return self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_MAG_Y_MSB), self.b.read_byte_data(self.LSM, self.LSM_MAG_Y_LSB))
+        
+    def readMagZ(self):
+        return self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_MAG_Z_MSB), self.b.read_byte_data(self.LSM, self.LSM_MAG_Z_LSB))
+        
+    def readAccX(self):
+        return self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_ACC_X_MSB), self.b.read_byte_data(self.LSM, self.LSM_ACC_X_LSB))
+    
+    def readAccY(self):
+        return self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_ACC_Y_MSB), self.b.read_byte_data(self.LSM, self.LSM_ACC_Y_LSB))
+   
+    def readAccZ(self):
+        return self.twos_comp_combine(self.b.read_byte_data(self.LSM, self.LSM_ACC_Z_MSB), self.b.read_byte_data(self.LSM, self.LSM_ACC_Z_LSB))
+        
+    def readGyroX(self):
+        return self.twos_comp_combine(self.b.read_byte_data(self.LGD, self.LGD_GYRO_X_MSB), self.b.read_byte_data(self.LGD, self.LGD_GYRO_X_LSB))
+        
+    def readGyroY(self):
+        return self.twos_comp_combine(self.b.read_byte_data(self.LGD, self.LGD_GYRO_Y_MSB), self.b.read_byte_data(self.LGD, self.LGD_GYRO_Y_LSB))
+        
+    def readGyroZ(self):
+        read self.twos_comp_combine(self.b.read_byte_data(self.LGD, self.LGD_GYRO_Z_MSB), self.b.read_byte_data(self.LGD, self.LGD_GYRO_Z_LSB))
+        
+
+    
