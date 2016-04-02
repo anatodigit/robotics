@@ -87,8 +87,7 @@ class MyIMU(object):
         #Read data from the chips ----------------------
         while True:
             time.sleep(0.5)
-            #print self.readSensors()
-            print "MagX:"+str(self.readMagX)
+            print self.readSensors()
     
     
     def twos_comp_combine(self, msb, lsb):
@@ -127,7 +126,7 @@ class MyIMU(object):
    
         data = (magx, magy, magz, accx, accy, accz, gyrox, gyroy, gyroz)
         '''  
-        data = (self.readMagX, self.readMagY, self.readMagZ, self.readAccX, self.readAccY, self.readAccZ, self.readGyroX, self.readGyroY, self.readGyroZ)
+        data = (self.readMagX(), self.readMagY(), self.readMagZ(), self.readAccX(), self.readAccY(), self.readAccZ(), self.readGyroX(), self.readGyroY(), self.readGyroZ())
         return data
 
 
