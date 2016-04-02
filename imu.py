@@ -345,7 +345,7 @@ class MyIMU(object):
     	self.YP_11 = self.YP_11 + ( + self.Q_gyro * DT )
     
     	y = accAngle - self.KFangleY
-    	S = self.YP_00 + R_angle
+    	S = self.YP_00 + self.R_angle
     	K_0 = self.YP_00 / S
     	K_1 = self.YP_10 / S
     	
@@ -385,7 +385,7 @@ class MyIMU(object):
     	self.YP_11 = self.YP_11 + ( + self.Q_gyro * DT )
     
     	x = accAngle - self.KFangleX
-    	S = self.YP_00 + R_angle
+    	S = self.YP_00 + self.R_angle
     	K_0 = self.YP_00 / S
     	K_1 = self.YP_10 / S
     	
