@@ -14,17 +14,17 @@ def distance():
         time.sleep(0.3)
         print "after sleep"
         # Send 10us pulse to trigger
-        GPIO.output(12, True)
+        gpio.output(12, True)
         print "pin 12 to true"
         time.sleep(0.00001)
         print "after sleep 2"
-        GPIO.output(12, False)
+        gpio.output(12, False)
         print "end of trigger pulse"
         start = time.time()
-        while GPIO.input(16)==0:
+        while gpio.input(16)==0:
             start = time.time()
 
-        while GPIO.input(16)==1:
+        while gpio.input(16)==1:
             stop = time.time()
         
         
