@@ -7,19 +7,21 @@ def distance():
     print "top of file"
     
     try:
+        print "top of try"
         gpio.setmode(gpio.BOARD)
         gpio.setup(sonicTrigger1, gpio.OUT)
         gpio.setup(sonicEcho1, gpio.IN)
-        
+        print "end setup"
         gpio.output(sonicTrigger1, False)
-        
+        print "trigger set to false"
         # Allow module to settle
         time.sleep(0.3)
+        print "after sleep"
         # Send 10us pulse to trigger
         GPIO.output(sonicTrigger1, True)
         time.sleep(0.00001)
         GPIO.output(sonicTrigger1, False)
-        
+        print "end of trigger pulse"
         start = time.time()
         while GPIO.input(sonicEcho1)==0:
             start = time.time()
