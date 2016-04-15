@@ -1,4 +1,5 @@
 import sonic
+import time
 
 while True:
     print "distance is ", sonic.distance()
