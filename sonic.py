@@ -26,6 +26,8 @@ def distance():
         while GPIO.input(sonicEcho1)==1:
             stop = time.time()
         
+        
+        print "start is ", start, "  end is ",stop
         # Calculate pulse length
         elapsed = stop-start
 
