@@ -4,22 +4,20 @@ import time
 def distance():
     sonicTrigger1 = 12
     sonicEcho1 = 16
-    print "top of file"
     
     try:
-        print "top of try"
         gpio.setmode(gpio.BOARD)
         gpio.setup(12, gpio.OUT)
         gpio.setup(16, gpio.IN)
-        print "end setup"
         gpio.output(12, False)
-        print "trigger set to false"
         # Allow module to settle
         time.sleep(0.3)
         print "after sleep"
         # Send 10us pulse to trigger
         GPIO.output(12, True)
+        print "pin 12 to true"
         time.sleep(0.00001)
+        print "after sleep 2"
         GPIO.output(12, False)
         print "end of trigger pulse"
         start = time.time()
