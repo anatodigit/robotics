@@ -11,7 +11,8 @@ def distance():
         gpio.setup(sonicEcho1, gpio.IN)
         gpio.output(sonicTrigger1, False)
         # Allow module to settle
-        time.sleep(0.3)
+        #time.sleep(0.3)
+        time.sleep(0.05)
         # Send 10us pulse to trigger
         gpio.output(sonicTrigger1, True)
         time.sleep(0.00001)
