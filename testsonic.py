@@ -1,3 +1,5 @@
 import sonic
 
-print "distance is ", sonic.distance()
+while True:
+    print "distance is ", sonic.distance()
+    time.sleep(0.03)
