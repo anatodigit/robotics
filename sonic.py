@@ -7,28 +7,23 @@ def distance():
     
     try:
         gpio.setmode(gpio.BOARD)
-        gpio.setup(12, gpio.OUT)
-        gpio.setup(16, gpio.IN)
-        gpio.output(12, False)
+        gpio.setup(sonicTrigger1, gpio.OUT)
+        gpio.setup(sonicEcho1, gpio.IN)
+        gpio.output(sonicTrigger1, False)
         # Allow module to settle
         time.sleep(0.3)
-        print "after sleep"
         # Send 10us pulse to trigger
-        gpio.output(12, True)
-        print "pin 12 to true"
+        gpio.output(sonicTrigger1, True)
         time.sleep(0.00001)
-        print "after sleep 2"
-        gpio.output(12, False)
-        print "end of trigger pulse"
+        gpio.output(sonicTrigger1, False)
         start = time.time()
-        while gpio.input(16)==0:
+        while gpio.input(sonicEcho1)==0:
             start = time.time()
 
-        while gpio.input(16)==1:
+        while gpio.input(sonicEcho1)==1:
             stop = time.time()
         
         
-        print "start is ", start, "  end is ",stop
         # Calculate pulse length
         elapsed = stop-start
 
