@@ -5,7 +5,6 @@ def distance(measure='cm'):
     gpio.setmode(gpio.BOARD)
     gpio.setup(12, gpio.OUT)
     gpio.setup(16, gpio.IN)
-    gpio.cleanup()
     gpio.output(12, False)
     nosig = 0
     while gpio.input(16) == 0:
