@@ -4,7 +4,8 @@ import time
 def distance():
     sonicTrigger1 = 12
     sonicEcho1 = 16
-
+    print "top of file"
+    
     try:
         gpio.setmode(gpio.BOARD)
         gpio.setup(sonicTrigger1, gpio.OUT)
